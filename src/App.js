@@ -2,9 +2,8 @@ import "./App.css";
 import { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import axios from "axios";
-
-
 const url = 'http://localhost:5000/'
+
 function App() {
   const [locations, setLocations] = useState([]);
   const [inputLoc, setInputloc] = useState("");
