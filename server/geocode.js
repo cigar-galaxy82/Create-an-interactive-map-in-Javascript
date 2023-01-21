@@ -30,7 +30,18 @@ async function run(loc) {
 }
 
 app.post('/cor', async(req,res) => {
-    res.send(await run(req.body.inputLoc));
+    let coordinate = {}
+    try {
+      await run(req.body.inputLocOne).then(async(response) => {
+        coordinate.cor1 = response
+        await run(req.body.inputLocTwo).then((response) => {
+          coordinate.cor2 = response
+          res.send(coordinate)
+        })
+      })
+    }catch(err){
+      console.log(err)
+    }
 })
 
 app.listen(PORT, () => {
